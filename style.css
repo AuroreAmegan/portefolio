@@ -109,15 +109,50 @@ body {
 }
 
 /* ==========================================
-   PHOTO DE PROFIL (MODIFIÉ : BORDURE BLEUE)
+   CORRECTION DU BLANC : LE CONTENEUR CIEL UNIQUE
+   ========================================== */
+.main-sky-wrapper {
+    position: relative;
+    padding-top: 1px; /* Évite les bugs de marges */
+    margin-top: 0;
+}
+
+.transparent-section {
+    background: transparent !important; /* Enlève tout fond blanc de la section parcours */
+    padding-top: 40px;
+}
+
+/* L'arrière-plan Ciel et Nuages */
+.bg-sky-clouds {
+    background-image: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.transparent-section {
+    background: transparent !important;
+    padding-top: 40px;
+}
+
+.main-sky-wrapper {
+    position: relative;
+    padding-top: 1px;
+    margin-top: 0;
+}
+
+
+/* ==========================================
+   PHOTO DE PROFIL (AJUSTÉE)
    ========================================== */
 .Profil {
-    margin: -80px auto 40px auto; 
+    margin: -90px auto 20px auto; /* Placé au-dessus du conteneur de ciel */
     width: 180px;
     height: 180px;
     border-radius: 50%; 
-    border: 6px solid var(--primary); /* Modifié ici : Changement du blanc vers le bleu ciel vif */
-    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3); /* Ombre ajustée en bleu translucide */
+    border: 6px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
     overflow: hidden;
     background-color: var(--light);
     position: relative;
@@ -159,24 +194,31 @@ body {
     padding-left: 30px; 
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-item { 
     margin-bottom: 40px; 
     position: relative; 
+    background: rgba(255, 255, 255, 0.85); 
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
     left: -42px;
-    top: 6px;
+    top: 24px;
     width: 16px;
     height: 16px;
     background: var(--white);
     border: 4px solid var(--primary);
     border-radius: 50%;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 3;
 }
 
 .timeline-item:hover::before {
@@ -256,7 +298,6 @@ body {
     font-weight: 600;
 }
 
-/* Style de la carte vide "+" réintégrée */
 .empty-project {
     background: transparent;
     border: 2px dashed #bce3f7;
@@ -336,7 +377,7 @@ body {
 }
 .mother-tongue { margin-top: 15px; font-size: 0.9rem; }
 
-/* Arrières-plans */
+/* Arrières-plans standards */
 .bg-white { background-color: var(--white); }
 .bg-light { background-color: var(--light); }
 
@@ -348,6 +389,8 @@ body {
     justify-content: center;
     gap: 60px;
     margin-top: 30px;
+    position: relative;
+    z-index: 2;
 }
 
 .interest-item {
@@ -357,6 +400,10 @@ body {
     align-items: center;
     gap: 10px;
     transition: color 0.3s ease, transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.85); 
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .interest-item:hover {
@@ -451,5 +498,5 @@ footer {
 @media (max-width: 480px) {
     .contact { flex-direction: column; gap: 10px; }
     .Profil { width: 140px; height: 140px; margin-top: -70px; }
-    .interests-grid { flex-direction: column; gap: 30px; }
+    .interests-grid { flex-direction: column; gap: 20px; align-items: center; }
 }
