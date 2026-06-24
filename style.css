@@ -1,0 +1,455 @@
+:root {
+    --primary: #00BFFF; /* Bleu ciel vif */
+    --secondary: #4682B4; /* Bleu acier */
+    --light: #f4fbff;
+    --white: #ffffff;
+    --dark: #2c3e50;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/* Espacements globaux */
+.section-padding { padding: 80px 20px; }
+.container-large { max-width: 1200px; margin: 0 auto; }
+.text-center { text-align: center; }
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+.Perso {
+    height: 65vh;
+    background: linear-gradient(rgba(244, 251, 255, 0.3), rgba(244, 251, 255, 0.5)), 
+                url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.badge {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInDown 0.6s 0.2s ease-out forwards;
+}
+
+.Perso-container h1 {
+    font-size: 3.5rem;
+    color: #1a252f;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.Info {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.4s ease-out forwards;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.6s ease-out forwards;
+}
+
+.contact span {
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.contact span:hover {
+    transform: scale(1.05);
+}
+
+.contact i {
+    color: var(--primary);
+    margin-right: 5px;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   PHOTO DE PROFIL (MODIFIÉ : BORDURE BLEUE)
+   ========================================== */
+.Profil {
+    margin: -80px auto 40px auto; 
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; 
+    border: 6px solid var(--primary); /* Modifié ici : Changement du blanc vers le bleu ciel vif */
+    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3); /* Ombre ajustée en bleu translucide */
+    overflow: hidden;
+    background-color: var(--light);
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: zoomInFadeIn 0.7s 0.3s ease-out forwards;
+}
+
+@keyframes zoomInFadeIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+.Profil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.Profil:hover img {
+    transform: scale(1.1);
+}
+
+/* Titres globaux */
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+.section-title.white { color: var(--white); }
+
+/* ==========================================
+   PARCOURS ACADÉMIQUE
+   ========================================== */
+.timeline { 
+    border-left: 4px solid var(--primary); 
+    padding-left: 30px; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item { 
+    margin-bottom: 40px; 
+    position: relative; 
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background: var(--white);
+    border: 4px solid var(--primary);
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    transform: scale(1.3);
+    background-color: var(--primary);
+}
+
+.year {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.institution {
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* ==========================================
+   SECTION PROJETS RÉALISÉS
+   ========================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.project-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eef7fc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,191,255,0.15);
+}
+
+.project-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.project-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tech span {
+    background: var(--light);
+    color: var(--secondary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Style de la carte vide "+" réintégrée */
+.empty-project {
+    background: transparent;
+    border: 2px dashed #bce3f7;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.empty-project .project-icon { color: #bce3f7; }
+
+/* ==========================================
+   SECTION EXPÉRIENCE & EXPERTISE INTERACTIVE
+   ========================================== */
+.grid-large {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #1e90ff, var(--secondary));
+    color: white;
+}
+
+.interactive-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive-box:hover, .interactive-box:active {
+    background-color: rgba(0, 240, 255, 0.25);
+    border-color: var(--white);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+}
+
+.job-card ul { margin-top: 15px; padding-left: 20px; }
+.job-card li { margin-bottom: 8px; }
+.company { color: #e0f4ff; font-style: italic; font-size: 0.9rem; }
+
+.skill-group h4 {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Barres de progression */
+.lang-bar { margin: 15px 0; }
+.lang-bar span { font-size: 0.9rem; }
+.progress {
+    background: rgba(255,255,255,0.25);
+    height: 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+.fill { 
+    background: var(--white); 
+    height: 100%; 
+    border-radius: 4px; 
+    transition: width 1s ease-in-out, background-color 0.3s, box-shadow 0.3s;
+}
+
+.skill-group:hover .fill, .skill-group:active .fill {
+    background-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+}
+.mother-tongue { margin-top: 15px; font-size: 0.9rem; }
+
+/* Arrières-plans */
+.bg-white { background-color: var(--white); }
+.bg-light { background-color: var(--light); }
+
+/* ==========================================
+   CENTRES D'INTÉRÊT
+   ========================================== */
+.interests-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.interest-item {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.interest-item:hover {
+    color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.interest-item i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+/* ==========================================
+   SECTION ME CONTACTER & FORMULAIRE
+   ========================================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+}
+
+.contact-info-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+.contact-info-card h3 { margin-bottom: 20px; color: var(--secondary); }
+.contact-info-card p { margin-bottom: 15px; font-size: 1rem; }
+.contact-info-card i { color: var(--primary); margin-right: 10px; width: 20px; }
+
+.social-links { margin-top: 25px; display: flex; gap: 15px; }
+.social-links a {
+    font-size: 1.4rem;
+    color: var(--primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-links a:hover { 
+    color: var(--secondary); 
+    transform: translateY(-3px) scale(1.1); 
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 15px; }
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    border: 2px solid #e0f4ff;
+    border-radius: 10px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.contact-form input:focus, .contact-form textarea:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+}
+
+.btn-submit {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.1s;
+}
+.btn-submit:hover { 
+    background: var(--secondary); 
+    box-shadow: 0 5px 15px rgba(0,191,255,0.3); 
+}
+.btn-submit:active { transform: scale(0.98); }
+
+/* Footer */
+footer { 
+    padding: 30px; 
+    text-align: center; 
+    background: #eef7fc; 
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+/* ==========================================
+   MEDIA QUERIES (Mobiles)
+   ========================================== */
+@media (max-width: 900px) {
+    .grid-large, .contact-grid { grid-template-columns: 1fr; }
+    .Perso-container h1 { font-size: 2.5rem; }
+    .interests-grid { gap: 30px; }
+}
+
+@media (max-width: 480px) {
+    .contact { flex-direction: column; gap: 10px; }
+    .Profil { width: 140px; height: 140px; margin-top: -70px; }
+    .interests-grid { flex-direction: column; gap: 30px; }
+}
